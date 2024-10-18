@@ -36,10 +36,10 @@ model Tournament  {
   players User[] 
 }
 
-model Thread {
-  id Int @id @default(autoincrement())
-  title String 
-  vote Int @default(0)
-  postedBy User
+// model Thread {
+//   id Int @id @default(autoincrement())
+//   title String 
+//   vote Int @default(0)
+//   postedBy User
 
-}
+// }
