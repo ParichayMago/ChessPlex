@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  raiting String
+  email String  
+}
+
+model Match {
+  playerOne User @relation(fields: [playerOneId], references: [id])
+  playerOneId Int
+  playerTwo User  
+  playerTwoId Int
+  time DateTime
+  // semi-finals/finals/quaterfinals/groupstage
+  TournamentRound String
+  Vods String[]
+}
+
+
+model Tournament  {
+  TotalPlayers Int
+  Tier String
+  // ongoing/upcomig/happend
+  Status String 
+  StartingDate DateTime
+  players User[] 
+}
+
+model Thread {
+  id Int @id @default(autoincrement())
+  title String 
+  vote Int @default(0)
+  postedBy User
+
+}
