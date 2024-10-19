@@ -16,13 +16,14 @@ model User {
 }
 
 model Player {
-  id           Int         @id @default(autoincrement())
-  user         User        @relation(fields: [userId], references: [id])
-  userId       Int         @unique
-  rating       Int
-  playerOneMatches Match[] @relation("playerOne")
-  playerTwoMatches Match[] @relation("playerTwo")
-  tournaments  Tournament[]
+  id               Int          @id @default(autoincrement())
+  username         String
+  user             User         @relation(fields: [userId], references: [id])
+  userId           Int          @unique
+  rating           Int
+  playerOneMatches Match[]      @relation("playerOne")
+  playerTwoMatches Match[]      @relation("playerTwo")
+  tournaments      Tournament[]
 }
 
 model Match {
@@ -32,18 +33,18 @@ model Match {
   playerTwo       Player      @relation("playerTwo", fields: [playerTwoId], references: [id])
   playerTwoId     Int
   time            DateTime
-  tournamentRound String
-  vods            String[]
   tournament      Tournament? @relation(fields: [tournamentId], references: [id])
   tournamentId    Int?
+  tournamentRound String
+  vods            String[]
 }
 
 model Tournament {
   id           Int      @id @default(autoincrement())
   name         String
-  prizepool    Int? 
+  prizepool    Int?
   totalPlayers Int
-  tier         String
+  tier         String //tier can only range from 1 to 3
   status       String
   startingDate DateTime
   players      Player[]
