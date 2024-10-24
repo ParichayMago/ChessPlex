@@ -1,0 +1,11 @@
+making two seprate folder for client and serever
+
+
+For server
+using Express as it is the most comfertable backend liberary i can use to make it fastest (not the app in latency but the development speed)
+
+For client
+using Nextjs and tailwind for it, thinking what should be my priority right now. well its pretty easy.
+
+
+

@@ -34,11 +34,21 @@ export const loginBodySchema = z.object({
 export const matchSchema = z.object({
   playerOneId: z.number(),
   playerTwoId: z.number(),
-  time: z.date(),
+  timestamp: z.string(),
   tournamentId: z.number(),
   tournamentRound: tournamentRoundStatusSchema,
   vods: z.array(z.string()),
 });
+
+export const matchInputSchema = matchSchema.extend({
+  playerOneName: z.string(),
+  playerOnePfp: z.string().optional(),
+  playerOneCountry: z.string(),
+  playerTwoName: z.string(),
+  playerTwoPfp: z.string().optional(),
+  playerTwoCountry:z.string(),
+  tournamentName: z.string(),
+})
 
 export const tournamentSchema = z.object({
   name: z.string(),
